@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="GangOfFour\" />
+    <Folder Include="GangOfFour\Bahavioral\" />
+    <Folder Include="GangOfFour\Structural\" />
   </ItemGroup>
 
 </Project>
