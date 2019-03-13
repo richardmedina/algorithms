@@ -3,6 +3,7 @@ using Algorithms.DesignPatterns.GangOfFour.Creational.AbstractFactory.MazeObject
 using Algorithms.DesignPatterns.GangOfFour.Creational.AbstractFactory.MazeObjects.Enchanted;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Pdf;
+using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,15 @@ namespace Algorithms.DesignPatterns.GangOfFour
         [TestMethod]
         public void FactoryMethod ()
         {
-            IDocumentFactory factory = new PdfDocumentFactory();
-            var document = factory.CreateDocument();
+            var factory = new DocumentFactory();
+            var pdfDocument = factory.CreateDocument("Pdf");
+            var xmlDocument = factory.CreateDocument("Xml");
 
-            Assert.IsInstanceOfType(document, typeof(PdfDocument));
-            Assert.AreEqual("Pdf", document.GetDocumentType());
+            Assert.IsInstanceOfType(pdfDocument, typeof(PdfDocument));
+            Assert.AreEqual("Pdf", pdfDocument.GetDocumentType());
+
+            Assert.IsInstanceOfType(xmlDocument, typeof(XmlDocument));
+            Assert.AreEqual("Xml", xmlDocument.GetDocumentType());
         }
 
         [TestMethod]
