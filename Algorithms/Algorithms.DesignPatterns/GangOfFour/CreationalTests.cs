@@ -1,6 +1,8 @@
 ﻿using Algorithms.DesignPatterns.GangOfFour.Creational.AbstractFactory;
 using Algorithms.DesignPatterns.GangOfFour.Creational.AbstractFactory.MazeObjects;
 using Algorithms.DesignPatterns.GangOfFour.Creational.AbstractFactory.MazeObjects.Enchanted;
+using Algorithms.DesignPatterns.GangOfFour.Creational.Builder;
+using Algorithms.DesignPatterns.GangOfFour.Creational.Builder.ConcreteBuilders;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Pdf;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Xml;
@@ -11,16 +13,20 @@ using System.Text;
 
 namespace Algorithms.DesignPatterns.GangOfFour
 {
-    [TestClass]
+    [TestClass, TestCategory("Algorithms.DesignPatterns.GangOfFour.Creational")]
     public class CreationalTests
     {
         [TestMethod]
         public void FactoryMethod ()
         {
+            // Arrange
             var factory = new DocumentFactory();
+
+            // Act
             var pdfDocument = factory.CreateDocument("Pdf");
             var xmlDocument = factory.CreateDocument("Xml");
 
+            // Assert
             Assert.IsInstanceOfType(pdfDocument, typeof(PdfDocument));
             Assert.AreEqual("Pdf", pdfDocument.GetDocumentType());
 
@@ -31,14 +37,16 @@ namespace Algorithms.DesignPatterns.GangOfFour
         [TestMethod]
         public void AbstractFactory ()
         {
+            // Arrange
             IMazeFactory factory = new MazeFactory();
             IMazeFactory enchantedFactory = new EnchantedMazeFactory();
 
+            // Act
             var game = new MazeGame();
-
             Maze maze = game.CreateMaze(factory);
             Maze mazeWithEnchantedRooms = game.CreateMaze(enchantedFactory);
 
+            // Assert
             foreach (Room room in maze.Rooms)
             {
                 Assert.IsInstanceOfType(room, typeof(Room));
@@ -47,6 +55,34 @@ namespace Algorithms.DesignPatterns.GangOfFour
 
             foreach (Room room in mazeWithEnchantedRooms.Rooms)
                 Assert.IsInstanceOfType(room, typeof(EnchantedRoom));
+        }
+
+        [TestMethod]
+        public void Builder ()
+        {
+            // Arrange
+            var simpleMemeBuilder = new SimpleMemeBuilder();
+            var sepiaMemeBuilder = new SepiaMemeBuilder();
+            var memeBuilderDirector = new MemeBuilderDirector();
+
+            // Act
+            memeBuilderDirector.SetMemeBuilder(simpleMemeBuilder);
+            memeBuilderDirector.BuildMeme();
+            var simpleMeme = memeBuilderDirector.GetMeme();
+
+            memeBuilderDirector.SetMemeBuilder(sepiaMemeBuilder);
+            memeBuilderDirector.BuildMeme();
+            var sepiaMeme = memeBuilderDirector.GetMeme();
+
+            // Assert
+            Assert.AreEqual("NoFilter", simpleMeme.Filter);
+            Assert.AreEqual("SimpleFrame", simpleMeme.Frame);
+            Assert.AreEqual("No more, no less", simpleMeme.Text);
+
+            Assert.AreEqual("Sepia", sepiaMeme.Filter);
+            Assert.AreEqual("Metallic", sepiaMeme.Frame);
+            Assert.AreEqual("I came searching for copper but found gold", sepiaMeme.Text);
+
         }
     }
 }
