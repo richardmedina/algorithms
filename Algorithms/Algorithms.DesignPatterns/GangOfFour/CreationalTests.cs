@@ -6,6 +6,7 @@ using Algorithms.DesignPatterns.GangOfFour.Creational.Builder.ConcreteBuilders;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Pdf;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Xml;
+using Algorithms.DesignPatterns.GangOfFour.Creational.Prototype;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,28 @@ namespace Algorithms.DesignPatterns.GangOfFour
             Assert.AreEqual("Sepia", sepiaMeme.Filter);
             Assert.AreEqual("Metallic", sepiaMeme.Frame);
             Assert.AreEqual("I came searching for copper but found gold", sepiaMeme.Text);
+
+        }
+
+        [TestMethod]
+        public void Prototype ()
+        {
+            // Arrange
+            var info1 = new PersonalInformation
+            {
+                FirstName = "Richard",
+                LastName = "Medina",
+                DateOfBirth = new DateTime (1982, 05, 18)
+            };
+
+            // Act
+            PersonalInformation info2 = (PersonalInformation) info1.Clone();
+
+            //Assert
+            Assert.AreNotEqual(info1, info2);
+            Assert.AreEqual(info1.FirstName, info2.FirstName);
+            Assert.AreEqual(info1.LastName, info2.LastName);
+            Assert.AreEqual(info1.DateOfBirth, info2.DateOfBirth);
 
         }
     }
