@@ -7,6 +7,7 @@ using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Pdf;
 using Algorithms.DesignPatterns.GangOfFour.Creational.FactoryMethod.Xml;
 using Algorithms.DesignPatterns.GangOfFour.Creational.Prototype;
+using Algorithms.DesignPatterns.GangOfFour.Creational.Singleton;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -101,11 +102,30 @@ namespace Algorithms.DesignPatterns.GangOfFour
             PersonalInformation info2 = (PersonalInformation) info1.Clone();
 
             //Assert
-            Assert.AreNotEqual(info1, info2);
+            Assert.AreNotSame(info1, info2);
             Assert.AreEqual(info1.FirstName, info2.FirstName);
             Assert.AreEqual(info1.LastName, info2.LastName);
             Assert.AreEqual(info1.DateOfBirth, info2.DateOfBirth);
 
+        }
+
+        [TestMethod]
+        public void Singleton ()
+        {
+            // Arrange
+            var singleton1 = ConfigurationSingleton.GetInstance();
+            var singleton2 = ConfigurationSingleton.GetInstance();
+
+            // Act
+            singleton1.DbConnectionString = "MyConnectionString";
+            singleton1.EnvironmentName = "Environment";
+
+            //Assert
+            Assert.IsNotNull(singleton1);
+            Assert.IsNotNull(singleton2);
+            Assert.AreSame(singleton1, singleton2);
+            Assert.AreSame(singleton1.DbConnectionString, singleton2.DbConnectionString);
+            Assert.AreSame(singleton1.EnvironmentName, singleton2.EnvironmentName);
         }
     }
 }
