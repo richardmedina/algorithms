@@ -1,14 +1,11 @@
 ﻿using Algorithms.DesignPatterns.GangOfFour.Structural.Adapter;
-using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge.Impl;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Composite.Computers;
-using Algorithms.DesignPatterns.GangOfFour.Structural.Decorator;
-using Algorithms.DesignPatterns.GangOfFour.Structural.Decorator.Drawing;
+using Algorithms.DesignPatterns.GangOfFour.Structural.Facade;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Decorator = Algorithms.DesignPatterns.GangOfFour.Structural.Decorator;
+using Facade = Algorithms.DesignPatterns.GangOfFour.Structural.Facade;
 
 namespace Algorithms.DesignPatterns.GangOfFour
 {
@@ -72,10 +69,10 @@ namespace Algorithms.DesignPatterns.GangOfFour
         public void Decorator ()
         {
             // Arrange
-            IShape circle = new Circle();
-            IShape rectangle = new Rectangle();
-            IShape circleWithBackground = new BackgroundDecorator(circle);
-            IShape rectangleWithBackground = new BackgroundDecorator(rectangle);
+            Decorator.Drawing.IShape circle = new Decorator.Drawing.Circle();
+            Decorator.Drawing.IShape rectangle = new Decorator.Drawing.Rectangle();
+            Decorator.Drawing.IShape circleWithBackground = new Decorator.BackgroundDecorator(circle);
+            Decorator.Drawing.IShape rectangleWithBackground = new Decorator.BackgroundDecorator(rectangle);
 
             // Act
             var circleResult = circle.Draw();
@@ -92,5 +89,22 @@ namespace Algorithms.DesignPatterns.GangOfFour
 
         }
 
+
+        [TestMethod]
+        public void Facade ()
+        {
+            // Arrange
+            IShapeMaker shapeMaker = new ShapeMaker();
+
+            // Act
+            IShape circle = shapeMaker.CreateCircle();
+            IShape square = shapeMaker.CreateSquare();
+            IShape triangle = shapeMaker.CreateTriangle();
+
+            // Assert
+            Assert.IsInstanceOfType(circle, typeof(Facade.Shapes.Circle));
+            Assert.IsInstanceOfType(square, typeof(Facade.Shapes.Square));
+            Assert.IsInstanceOfType(triangle, typeof(Facade.Shapes.Triangle));
+        }
     }
 }
