@@ -2,6 +2,8 @@
 using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge.Impl;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Composite.Computers;
+using Algorithms.DesignPatterns.GangOfFour.Structural.Facade;
+using Algorithms.DesignPatterns.GangOfFour.Structural.Facade.Shapes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
     public class StructuralTests
     {
         [TestMethod]
-        public void Adapter ()
+        public void Adapter()
         {
             // Arrange
             IOperativeSystem[] systems = { new WindowsOperativeSystem(), new MacOperativeSystem(), new LinuxOperativeSystemAdapter() };
@@ -28,22 +30,22 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Bridge ()
+        public void Bridge()
         {
             var order = new AscOrder();
             var sort = new QuickSort(order);
-            var array = new []{ 3, 5, 1, 2, 4 };
+            var array = new[] { 3, 5, 1, 2, 4 };
 
-            var sortedArray = sort.Sort(array).ToArray ();
+            var sortedArray = sort.Sort(array).ToArray();
 
-            for (var i = 1; i < 5; i ++)
+            for (var i = 1; i < 5; i++)
             {
                 Assert.AreEqual(i, sortedArray[i - 1]);
             }
         }
 
         [TestMethod]
-        public void Composite ()
+        public void Composite()
         {
             // Arrange
             var computer = new Computer("Cheap Computer");
@@ -64,6 +66,23 @@ namespace Algorithms.DesignPatterns.GangOfFour
             Assert.AreEqual(150, cpu.GetPrice());
             Assert.AreEqual("Monitor", monitor.GetName());
             Assert.AreEqual(50, monitor.GetPrice());
+        }
+
+        [TestMethod]
+        public void Facade ()
+        {
+            // Arrange
+            IShapeMaker shapeMaker = new ShapeMaker();
+
+            // Act
+            IShape circle = shapeMaker.CreateCircle();
+            IShape square = shapeMaker.CreateSquare();
+            IShape triangle = shapeMaker.CreateTriangle();
+
+            // Assert
+            Assert.IsInstanceOfType(circle, typeof(Circle));
+            Assert.IsInstanceOfType(square, typeof(Square));
+            Assert.IsInstanceOfType(triangle, typeof(Triangle));
         }
     }
 }
