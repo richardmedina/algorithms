@@ -2,6 +2,8 @@
 using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge.Impl;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Composite.Computers;
+using Algorithms.DesignPatterns.GangOfFour.Structural.Decorator;
+using Algorithms.DesignPatterns.GangOfFour.Structural.Decorator.Drawing;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Facade;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Facade.Shapes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -67,6 +69,31 @@ namespace Algorithms.DesignPatterns.GangOfFour
             Assert.AreEqual("Monitor", monitor.GetName());
             Assert.AreEqual(50, monitor.GetPrice());
         }
+
+        [TestMethod]
+        public void Decorator ()
+        {
+            // Arrange
+            IShape circle = new Circle();
+            IShape rectangle = new Rectangle();
+            IShape circleWithBackground = new BackgroundDecorator(circle);
+            IShape rectangleWithBackground = new BackgroundDecorator(rectangle);
+
+            // Act
+            var circleResult = circle.Draw();
+            var rectangleResult = rectangle.Draw();
+            var circleWithBackgroundResult = circleWithBackground.Draw();
+            var rectangleWithBackgroundResult = rectangleWithBackground.Draw();
+
+            // Assert
+
+            Assert.AreEqual(true, circleResult);
+            Assert.AreEqual(true, rectangleResult);
+            Assert.AreEqual(true, circleWithBackgroundResult);
+            Assert.AreEqual(true, rectangleWithBackgroundResult);
+
+        }
+
 
         [TestMethod]
         public void Facade ()
