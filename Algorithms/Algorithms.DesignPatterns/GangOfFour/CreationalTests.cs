@@ -19,7 +19,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
     public class CreationalTests
     {
         [TestMethod]
-        public void FactoryMethod ()
+        public void FactoryMethodTest ()
         {
             // Arrange
             var factory = new DocumentFactory();
@@ -37,7 +37,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void AbstractFactory ()
+        public void AbstractFactoryTest ()
         {
             // Arrange
             IMazeFactory factory = new MazeFactory();
@@ -60,7 +60,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Builder ()
+        public void BuilderTest ()
         {
             // Arrange
             var simpleMemeBuilder = new SimpleMemeBuilder();
@@ -88,7 +88,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Prototype ()
+        public void PrototypeTest ()
         {
             // Arrange
             var info1 = new PersonalInformation
@@ -110,7 +110,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Singleton ()
+        public void SingletonTest ()
         {
             // Arrange
             var singleton1 = ConfigurationSingleton.GetInstance();

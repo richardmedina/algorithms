@@ -15,7 +15,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
     public class StructuralTests
     {
         [TestMethod]
-        public void Adapter()
+        public void AdapterTest()
         {
             // Arrange
             IOperativeSystem[] systems = { new WindowsOperativeSystem(), new MacOperativeSystem(), new LinuxOperativeSystemAdapter() };
@@ -29,7 +29,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Bridge()
+        public void BridgeTest()
         {
             var order = new AscOrder();
             var sort = new QuickSort(order);
@@ -44,7 +44,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Composite()
+        public void CompositeTest()
         {
             // Arrange
             var computer = new Computer("Cheap Computer");
@@ -68,7 +68,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Decorator ()
+        public void DecoratorTest ()
         {
             // Arrange
             Decorator.Drawing.IShape circle = new Decorator.Drawing.Circle();
@@ -93,15 +93,15 @@ namespace Algorithms.DesignPatterns.GangOfFour
 
 
         [TestMethod]
-        public void Facade ()
+        public void FacadeTest ()
         {
             // Arrange
             IShapeMaker shapeMaker = new ShapeMaker();
 
             // Act
-            IShape circle = shapeMaker.CreateCircle();
-            IShape square = shapeMaker.CreateSquare();
-            IShape triangle = shapeMaker.CreateTriangle();
+            Facade.IShape circle = shapeMaker.CreateCircle();
+            Facade.IShape square = shapeMaker.CreateSquare();
+            Facade.IShape triangle = shapeMaker.CreateTriangle();
 
             // Assert
             Assert.IsInstanceOfType(circle, typeof(Facade.Shapes.Circle));
@@ -110,7 +110,7 @@ namespace Algorithms.DesignPatterns.GangOfFour
         }
 
         [TestMethod]
-        public void Flyweights ()
+        public void FlyweightTest ()
         {
             // Arrange
             Flyweight.FlyweightFactory factory = new Flyweight.FlyweightFactory();
