@@ -3,9 +3,11 @@ using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge.Impl;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Composite.Computers;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Facade;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Linq;
 using Decorator = Algorithms.DesignPatterns.GangOfFour.Structural.Decorator;
 using Facade = Algorithms.DesignPatterns.GangOfFour.Structural.Facade;
+using Flyweight = Algorithms.DesignPatterns.GangOfFour.Structural.Flyweight;
 
 namespace Algorithms.DesignPatterns.GangOfFour
 {
@@ -105,6 +107,28 @@ namespace Algorithms.DesignPatterns.GangOfFour
             Assert.IsInstanceOfType(circle, typeof(Facade.Shapes.Circle));
             Assert.IsInstanceOfType(square, typeof(Facade.Shapes.Square));
             Assert.IsInstanceOfType(triangle, typeof(Facade.Shapes.Triangle));
+        }
+
+        [TestMethod]
+        public void Flyweights ()
+        {
+            // Arrange
+            Flyweight.FlyweightFactory factory = new Flyweight.FlyweightFactory();
+            
+            // Act
+            for (int i = 0; i < 10; i ++)
+            {
+                var shape = factory.GetShape(i % 2 == 0 
+                    ? Flyweight.ShapeType.Circle 
+                    : Flyweight.ShapeType.Square);
+                shape.Color = i % 3 == 0
+                    ? "red"
+                    : "blue";
+                shape.Draw();
+            }
+
+            // Assert
+            Assert.AreEqual(2, factory.GetShapesCount());
         }
     }
 }
