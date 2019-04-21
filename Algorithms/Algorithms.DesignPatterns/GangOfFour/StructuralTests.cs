@@ -2,6 +2,7 @@
 using Algorithms.DesignPatterns.GangOfFour.Structural.Bridge.Impl;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Composite.Computers;
 using Algorithms.DesignPatterns.GangOfFour.Structural.Facade;
+using Algorithms.DesignPatterns.GangOfFour.Structural.Proxy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
@@ -129,6 +130,27 @@ namespace Algorithms.DesignPatterns.GangOfFour
 
             // Assert
             Assert.AreEqual(2, factory.GetShapesCount());
+        }
+
+        [TestMethod]
+        public void ProxyTest ()
+        {
+            // Arrange
+            IHttpProxy httpProxy = new HttpProxy();
+            string resource = "https://www.domain.com/api/items";
+            int itemId = 100;
+
+            // Act
+            var postResult = httpProxy.Post($"{resource}", new { ItemId = 100, ItemName = "Item Name" });
+            var putResult = httpProxy.Put($"{resource}/{itemId}", new { ItemName = "Item New Name"});
+            var getResult = httpProxy.Get($"{resource}/{itemId}");
+            var deleteResult = httpProxy.Delete($"{resource}/{itemId}");
+
+            // Assert
+            Assert.AreEqual(201, postResult.HttpStatusCode);
+            Assert.AreEqual(200, putResult.HttpStatusCode);
+            Assert.AreEqual(200, getResult.HttpStatusCode);
+            Assert.AreEqual(200, deleteResult.HttpStatusCode);
         }
     }
 }
