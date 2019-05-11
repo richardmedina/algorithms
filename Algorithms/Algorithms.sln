@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.DesignPatterns",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.Solid", "Algorithms.Solid\Algorithms.Solid.csproj", "{EAE1F4B3-A681-445F-8B59-1FF132512D66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tests", "Algorithms.Tests\Algorithms.Tests.csproj", "{BAF15ACA-4197-4C6F-B386-FC545172CF02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.Tests", "Algorithms.Tests\Algorithms.Tests.csproj", "{BAF15ACA-4197-4C6F-B386-FC545172CF02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.DataStructures", "Algorithms.DataStructures\Algorithms.DataStructures.csproj", "{88068976-B994-45F2-9E48-2878BB40140E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.DataStructures", "Algorithms.DataStructures\Algorithms.DataStructures.csproj", "{88068976-B994-45F2-9E48-2878BB40140E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.CustomAlgorithms", "Algorithms.CustomAlgorithms\Algorithms.CustomAlgorithms.csproj", "{C28D2354-2839-4164-B53D-73F7FB4BD4CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{88068976-B994-45F2-9E48-2878BB40140E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88068976-B994-45F2-9E48-2878BB40140E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88068976-B994-45F2-9E48-2878BB40140E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28D2354-2839-4164-B53D-73F7FB4BD4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28D2354-2839-4164-B53D-73F7FB4BD4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28D2354-2839-4164-B53D-73F7FB4BD4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28D2354-2839-4164-B53D-73F7FB4BD4CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
