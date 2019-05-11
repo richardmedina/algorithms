@@ -33,7 +33,7 @@ namespace Algorithms.CustomAlgorithms.LongestSubsequence
 
                     if (lastIndex >= cs1.Length || lastIndex >= cs2.Length) break;
 
-                    var index = s2.IndexOf(currentChar, lastIndex);
+                    var index = IndexOf(cs2, currentChar, lastIndex);
 
                     if (index > -1)
                     {
@@ -51,6 +51,16 @@ namespace Algorithms.CustomAlgorithms.LongestSubsequence
                 if (longest.Length < value.Length)
                     longest = value;
             return longest;
+        }
+
+        private int IndexOf (char[] source, char c, int initialPosition = 0)
+        {
+            for (int i = initialPosition; i < source.Length; i++)
+            {
+                if (source[i] == c) return i;
+            }
+
+            return -1;
         }
     }
 }
