@@ -1,6 +1,7 @@
 ﻿using Algorithms.CustomAlgorithms.FirstRecurringChar;
 using Algorithms.CustomAlgorithms.IncrementArray;
 using Algorithms.CustomAlgorithms.LongestSubsequence;
+using Algorithms.CustomAlgorithms.TeamCuisine;
 using Algorithms.CustomAlgorithms.ThirdSmallest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -78,6 +79,28 @@ namespace Algorithms.Tests.CustomAlgorithms
             // Assert
             Assert.AreEqual(expectedResult1, result1);
             Assert.AreEqual(expectedResult2, result2);
+        }
+
+        [TestMethod]
+        public void TeamCousineTest ()
+        {
+            var customAlgorithm = new TeamCousineAlgorithm();
+            var param = new TeamCuisineParams
+            {
+                LunchMenuPairs = new [,] {
+                    { "Pizza", "Italian"},
+                    { "Curry", "Indian" },
+                    { "Masala", "Indian" }
+                },
+                TeamCuisinePreferences = new [,]{
+                    { "Jose", "Italian" },
+                    { "John", "Indian" },
+                    { "Sarah", "Thai" },
+                    { "Mary", "*" }
+                }
+            };
+
+            var result = customAlgorithm.Run(param);
         }
     }
 }
