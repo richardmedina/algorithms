@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Algorithms.CustomAlgorithms.TeamCuisine
 {
-    public class TeamCousineAlgorithm : ICustomAlgorithm<string[,], TeamCuisineParams>
+    public class TeamCuisineAlgorithm : ICustomAlgorithm<string[,], TeamCuisineParams>
     {
         public string[,] Run(TeamCuisineParams param)
         {

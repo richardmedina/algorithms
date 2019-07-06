@@ -84,7 +84,7 @@ namespace Algorithms.Tests.CustomAlgorithms
         [TestMethod]
         public void TeamCousineTest ()
         {
-            var customAlgorithm = new TeamCousineAlgorithm();
+            var customAlgorithm = new TeamCuisineAlgorithm();
             var param = new TeamCuisineParams
             {
                 LunchMenuPairs = new [,] {
