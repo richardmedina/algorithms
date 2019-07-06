@@ -1,6 +1,7 @@
 ﻿using Algorithms.CustomAlgorithms.FirstRecurringChar;
 using Algorithms.CustomAlgorithms.FizzBuzz;
 using Algorithms.CustomAlgorithms.IncrementArray;
+using Algorithms.CustomAlgorithms.IsPalindrome;
 using Algorithms.CustomAlgorithms.LongestSubsequence;
 using Algorithms.CustomAlgorithms.TeamCuisine;
 using Algorithms.CustomAlgorithms.ThirdSmallest;
@@ -109,6 +110,19 @@ namespace Algorithms.Tests.CustomAlgorithms
         {
             var customAlgorithm = new FizzBuzzAlgorithm();
             customAlgorithm.Run(100);
+        }
+
+        [TestMethod]
+        public void IsPalindromeTest ()
+        {
+            var customAlgorithm = new IsPalindromeAlgorithm();
+            var isPalindrome = "sugus";
+            var isPalindrome2 = "hooh";
+            var isNotPalindrome = "Hello";
+
+            Assert.AreEqual(true, customAlgorithm.Run(isPalindrome));
+            Assert.AreEqual(true, customAlgorithm.Run(isPalindrome2));
+            Assert.AreEqual(false, customAlgorithm.Run(isNotPalindrome));
         }
     }
 }
