@@ -3,6 +3,7 @@ using Algorithms.CustomAlgorithms.FizzBuzz;
 using Algorithms.CustomAlgorithms.IncrementArray;
 using Algorithms.CustomAlgorithms.IsPalindrome;
 using Algorithms.CustomAlgorithms.LongestSubsequence;
+using Algorithms.CustomAlgorithms.StringShuffle;
 using Algorithms.CustomAlgorithms.TeamCuisine;
 using Algorithms.CustomAlgorithms.ThirdSmallest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,11 +18,11 @@ namespace Algorithms.Tests.CustomAlgorithms
     public class CustomAlgorithmsTests
     {
         [TestMethod]
-        public void IncrementArrayTest ()
+        public void IncrementArrayTest()
         {
             // Arrange
             var customAlgorithm = new IncrementArrayAlgorithm();
-            int[] expectedResult1 = { 1, 2, 3, 5};
+            int[] expectedResult1 = { 1, 2, 3, 5 };
             int[] expectedResult2 = { 1, 0, 0, 0, 0 };
 
             // Act
@@ -34,7 +35,7 @@ namespace Algorithms.Tests.CustomAlgorithms
         }
 
         [TestMethod]
-        public void LongestSubsequenceTest ()
+        public void LongestSubsequenceTest()
         {
             // Arrange
             var customAlgorithm = new LongesSubsequenceAlgorithm();
@@ -54,7 +55,7 @@ namespace Algorithms.Tests.CustomAlgorithms
         }
 
         [TestMethod]
-        public void FirstRecurringCharTest ()
+        public void FirstRecurringCharTest()
         {
             // Arrange
             var customAlgorithm = new FirstRecurringCharAlgorithm();
@@ -67,7 +68,7 @@ namespace Algorithms.Tests.CustomAlgorithms
         }
 
         [TestMethod]
-        public void ThirdSmallestTest ()
+        public void ThirdSmallestTest()
         {
             // Arrange
             var customAlgorithm = new ThirdSmallestAlgorithm();
@@ -75,7 +76,7 @@ namespace Algorithms.Tests.CustomAlgorithms
             var expectedResult2 = 3;
 
             // Act
-            var result1 = customAlgorithm.Run (new []{ 50, 10, 20, 100, 200 });
+            var result1 = customAlgorithm.Run(new[] { 50, 10, 20, 100, 200 });
             var result2 = customAlgorithm.Run(new[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 });
 
             // Assert
@@ -84,17 +85,17 @@ namespace Algorithms.Tests.CustomAlgorithms
         }
 
         [TestMethod]
-        public void TeamCousineTest ()
+        public void TeamCousineTest()
         {
             var customAlgorithm = new TeamCuisineAlgorithm();
             var param = new TeamCuisineParams
             {
-                LunchMenuPairs = new [,] {
+                LunchMenuPairs = new[,] {
                     { "Pizza", "Italian"},
                     { "Curry", "Indian" },
                     { "Masala", "Indian" }
                 },
-                TeamCuisinePreferences = new [,]{
+                TeamCuisinePreferences = new[,]{
                     { "Jose", "Italian" },
                     { "John", "Indian" },
                     { "Sarah", "Thai" },
@@ -106,14 +107,14 @@ namespace Algorithms.Tests.CustomAlgorithms
         }
 
         [TestMethod]
-        public void FizzBuzzTest ()
+        public void FizzBuzzTest()
         {
             var customAlgorithm = new FizzBuzzAlgorithm();
             customAlgorithm.Run(100);
         }
 
         [TestMethod]
-        public void IsPalindromeTest ()
+        public void IsPalindromeTest()
         {
             var customAlgorithm = new IsPalindromeAlgorithm();
             var isPalindrome = "sugus";
@@ -123,6 +124,22 @@ namespace Algorithms.Tests.CustomAlgorithms
             Assert.AreEqual(true, customAlgorithm.Run(isPalindrome));
             Assert.AreEqual(true, customAlgorithm.Run(isPalindrome2));
             Assert.AreEqual(false, customAlgorithm.Run(isNotPalindrome));
+        }
+
+        [DataTestMethod()]
+        [DataRow("abcde")]
+        [DataRow("abcde")]
+        [DataRow("abcde")]
+        [DataRow("abcde")]
+        [DataRow("abcde")]
+        [DataRow("abcde")]
+        [DataRow("abcde")]
+        public void StringShuffleTest (string input)
+        {
+            var customAlgorithm = new StringShuffleAlgorithm();
+
+            var result = customAlgorithm.Run(input);
+            Console.WriteLine(result);
         }
     }
 }
