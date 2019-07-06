@@ -1,4 +1,5 @@
 ﻿using Algorithms.CustomAlgorithms.FirstRecurringChar;
+using Algorithms.CustomAlgorithms.FizzBuzz;
 using Algorithms.CustomAlgorithms.IncrementArray;
 using Algorithms.CustomAlgorithms.LongestSubsequence;
 using Algorithms.CustomAlgorithms.TeamCuisine;
@@ -101,6 +102,13 @@ namespace Algorithms.Tests.CustomAlgorithms
             };
 
             var result = customAlgorithm.Run(param);
+        }
+
+        [TestMethod]
+        public void FizzBuzzTest ()
+        {
+            var customAlgorithm = new FizzBuzzAlgorithm();
+            customAlgorithm.Run(100);
         }
     }
 }
