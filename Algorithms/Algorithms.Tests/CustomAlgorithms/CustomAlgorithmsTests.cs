@@ -1,4 +1,6 @@
-﻿using Algorithms.CustomAlgorithms.FirstRecurringChar;
+﻿using Algorithms.CustomAlgorithms.AddTwoListNodes;
+using Algorithms.CustomAlgorithms.Blocks;
+using Algorithms.CustomAlgorithms.FirstRecurringChar;
 using Algorithms.CustomAlgorithms.FizzBuzz;
 using Algorithms.CustomAlgorithms.IncrementArray;
 using Algorithms.CustomAlgorithms.IsPalindrome;
@@ -6,6 +8,7 @@ using Algorithms.CustomAlgorithms.LongestSubsequence;
 using Algorithms.CustomAlgorithms.StringShuffle;
 using Algorithms.CustomAlgorithms.TeamCuisine;
 using Algorithms.CustomAlgorithms.ThirdSmallest;
+using Algorithms.CustomAlgorithms.TwoNumbers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -134,12 +137,75 @@ namespace Algorithms.Tests.CustomAlgorithms
         [DataRow("abcde")]
         [DataRow("abcde")]
         [DataRow("abcde")]
-        public void StringShuffleTest (string input)
+        public void StringShuffleTest(string input)
         {
             var customAlgorithm = new StringShuffleAlgorithm();
 
             var result = customAlgorithm.Run(input);
             Console.WriteLine(result);
         }
+
+        [TestMethod]
+        public void BlocksAlgorithmTest()
+        {
+            // Arrange
+            var customAlgorithm = new BlocksAlgorithm();
+            var blocks = new[] { "5", "-2", "4", "Z", "X", "9", "+", "+" };
+
+            // Act
+            var result = customAlgorithm.Run(blocks);
+
+            // Assert
+            Assert.AreEqual(27, result);
+        }
+
+
+        [TestMethod]
+        public void TwoNumsTest()
+        {
+            // Arrange
+            var customAlgorithm = new TwoNumbersAlgorithm();
+            var input = new[] { 2, 7, 11, 15 };
+            var target = 9;
+
+            //Act
+            var result = customAlgorithm.Run(new TwoNumbersAlgorithmParams
+            {
+                Array = input,
+                Target = target
+            });
+
+            // Assert
+            Assert.AreEqual(result[0], 0);
+            Assert.AreEqual(result[1], 1);
+        }
+
+        [TestMethod]
+        public void AddTwoListNodesTest ()
+        {
+            // Arrange
+            var customAlgorithm = new AddTwoListNodesAlgorithm();
+            var list1 = new ListNode(2);
+            list1.next = new ListNode(4);
+            list1.next.next = new ListNode(3);
+
+            var list2 = new ListNode(5);
+            list2.next = new ListNode(6);
+            list2.next.next = new ListNode(4);
+
+
+            // Act
+            var result = customAlgorithm.Run(new AddTwoListNodesArguments
+            {
+                ListNode1 = list1,
+                ListNode2 = list2
+            });
+
+            // Assert
+            Assert.AreEqual(7, result.val);
+            Assert.AreEqual(0, result.next.val);
+            Assert.AreEqual(8, result.next.next.val);
+        }
+
     }
 }
