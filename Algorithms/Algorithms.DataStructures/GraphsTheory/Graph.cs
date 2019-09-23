@@ -17,9 +17,19 @@ namespace Algorithms.DataStructures.GraphsTheory
             InDegree = new int[NodeCount];
         }
 
+        public void AddArista (int startNode, int endNode)
+        {
+            Adjacency[startNode, endNode] = 1;
+        }
+
         public void AddArista (int startNode, int endNode, int weight)
         {
             Adjacency[startNode, endNode] = weight;
+        }
+
+        public int GetAdjacency (int row, int col)
+        {
+            return Adjacency[row, col];
         }
 
         public void ShowAdjacency ()
@@ -112,6 +122,11 @@ namespace Algorithms.DataStructures.GraphsTheory
                 }
 
             } while (node != -1);
+        }
+
+        public void PrintSmallestRoute (int initial, int target)
+        {
+            
         }
     }
 }
