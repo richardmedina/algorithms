@@ -1,4 +1,5 @@
-﻿using Algorithms.CustomAlgorithms.AddTwoListNodes;
+﻿using Algorithms.CustomAlgorithms.AddToSortedArray;
+using Algorithms.CustomAlgorithms.AddTwoListNodes;
 using Algorithms.CustomAlgorithms.Blocks;
 using Algorithms.CustomAlgorithms.DirectoryCreator;
 using Algorithms.CustomAlgorithms.FirstRecurringChar;
@@ -234,6 +235,54 @@ namespace Algorithms.Tests.CustomAlgorithms
 
 
             Console.WriteLine("Result: " + string.Join(", ", result));
+        }
+
+        [TestMethod]
+        public void MiscTest ()
+        {
+            var input = new[]{ 1, 10, 5, 100, 50, 20, 15 };
+            var expected = new[] { 1, 5, 10, 15, 20, 50, 100 };
+            var algo = new AddToSortedArrayAlgorithm();
+            int[] array = null;
+
+            foreach (var val in input)
+            {
+                array = algo.Run(val);
+            }
+
+            for(int i = 0; i < array.Length; i++)
+            {
+                Assert.AreEqual(expected[i], array[i]);
+            }
+
+            Console.WriteLine("SortedArray: ", array);
+        }
+
+        private int[] AddToSorted(int value, int[] array)
+        {
+            if ((array?.Length ?? 0) == 0) return new[] { value };
+
+            var arr = new int[array.Length + 1];
+            var idx = 0;
+            var added = false;
+
+            foreach(var item in array)
+            {
+                if (!added && value < item)
+                {
+                    arr[idx ++] = value;
+                    added = true;
+                }
+
+                arr[idx++] = item;
+            }
+
+            if(!added)
+            {
+                arr[idx++] = value;
+            }
+
+            return arr;
         }
 
     }
