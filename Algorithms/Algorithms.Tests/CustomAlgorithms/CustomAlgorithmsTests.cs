@@ -1,5 +1,6 @@
 ﻿using Algorithms.CustomAlgorithms.AddTwoListNodes;
 using Algorithms.CustomAlgorithms.Blocks;
+using Algorithms.CustomAlgorithms.DirectoryCreator;
 using Algorithms.CustomAlgorithms.FirstRecurringChar;
 using Algorithms.CustomAlgorithms.FizzBuzz;
 using Algorithms.CustomAlgorithms.IncrementArray;
@@ -209,12 +210,30 @@ namespace Algorithms.Tests.CustomAlgorithms
         }
 
         [TestMethod]
-        public void TestSimpleGraph()
+        public void SimpleGraph()
         {
             var customAlgorithm = new SimpleGraphAlgorithm();
             customAlgorithm.Run(7);
 
             Console.WriteLine("Hello Dijkstra!");
+        }
+
+        [TestMethod]
+        public void DirectoryCreator()
+        {
+            var input = new string []{ "dir1", "dir1", "dir2", "dir3", "dir1", "dir2"};
+            var expected = new string[] { "dir1", "dir1(1)", "dir2", "dir3", "dir1(2)", "dir2(1)" };
+
+            var algo = new DirectoryCreatorCustomAlgorithm();
+
+            var result = algo.Run(input);
+
+            for (int i = 0; i < input.Length; i++)
+                Assert.AreEqual(expected[i], result[i]);
+            
+
+
+            Console.WriteLine("Result: " + string.Join(", ", result));
         }
 
     }
