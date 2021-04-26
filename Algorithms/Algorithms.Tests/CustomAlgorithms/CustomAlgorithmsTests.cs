@@ -5,6 +5,7 @@ using Algorithms.CustomAlgorithms.FizzBuzz;
 using Algorithms.CustomAlgorithms.IncrementArray;
 using Algorithms.CustomAlgorithms.IsPalindrome;
 using Algorithms.CustomAlgorithms.LongestSubsequence;
+using Algorithms.CustomAlgorithms.SimpleGraph;
 using Algorithms.CustomAlgorithms.StringShuffle;
 using Algorithms.CustomAlgorithms.TeamCuisine;
 using Algorithms.CustomAlgorithms.ThirdSmallest;
@@ -205,6 +206,15 @@ namespace Algorithms.Tests.CustomAlgorithms
             Assert.AreEqual(7, result.val);
             Assert.AreEqual(0, result.next.val);
             Assert.AreEqual(8, result.next.next.val);
+        }
+
+        [TestMethod]
+        public void TestSimpleGraph()
+        {
+            var customAlgorithm = new SimpleGraphAlgorithm();
+            customAlgorithm.Run(7);
+
+            Console.WriteLine("Hello Dijkstra!");
         }
 
     }
