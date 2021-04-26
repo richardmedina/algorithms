@@ -232,8 +232,6 @@ namespace Algorithms.Tests.CustomAlgorithms
             for (int i = 0; i < input.Length; i++)
                 Assert.AreEqual(expected[i], result[i]);
             
-
-
             Console.WriteLine("Result: " + string.Join(", ", result));
         }
 
@@ -257,33 +255,5 @@ namespace Algorithms.Tests.CustomAlgorithms
 
             Console.WriteLine("SortedArray: ", array);
         }
-
-        private int[] AddToSorted(int value, int[] array)
-        {
-            if ((array?.Length ?? 0) == 0) return new[] { value };
-
-            var arr = new int[array.Length + 1];
-            var idx = 0;
-            var added = false;
-
-            foreach(var item in array)
-            {
-                if (!added && value < item)
-                {
-                    arr[idx ++] = value;
-                    added = true;
-                }
-
-                arr[idx++] = item;
-            }
-
-            if(!added)
-            {
-                arr[idx++] = value;
-            }
-
-            return arr;
-        }
-
     }
 }
