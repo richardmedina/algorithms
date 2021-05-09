@@ -1,5 +1,6 @@
 ﻿using Algorithms.CustomAlgorithms.AddToSortedArray;
 using Algorithms.CustomAlgorithms.AddTwoListNodes;
+using Algorithms.CustomAlgorithms.BinarySum;
 using Algorithms.CustomAlgorithms.Blocks;
 using Algorithms.CustomAlgorithms.DirectoryCreator;
 using Algorithms.CustomAlgorithms.FirstRecurringChar;
@@ -254,6 +255,19 @@ namespace Algorithms.Tests.CustomAlgorithms
             }
 
             Console.WriteLine("SortedArray: ", array);
+        }
+
+        [TestMethod]
+        public void BynarySumTest()
+        {
+            var algo = new BinarySumAlgorithm();
+            var param = new BinarySumParams
+            {
+                BinaryNumber1 = "11111111",
+                BinaryNumber2 = "11111111"
+            };
+
+            var result = algo.Run(param);
         }
     }
 }
