@@ -263,8 +263,8 @@ namespace Algorithms.Tests.CustomAlgorithms
             var algo = new BinarySumAlgorithm();
             var param = new BinarySumParams
             {
-                BinaryNumber1 = "11111111",
-                BinaryNumber2 = "11111111"
+                BinaryNumber1 = "99",
+                BinaryNumber2 = "99"
             };
 
             var result = algo.Run(param);
